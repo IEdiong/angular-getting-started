@@ -6,6 +6,11 @@ import { Component } from '@angular/core';
 })
 export class ProductList {
   pageTitle: string = 'Product List';
+  showImage: boolean = false;
+  imageWidth: number = 50;
+  imageMargin: number = 2;
+  listFilter: string = 'cart';
+
   products: any[] = [
     {
       productId: 1,
@@ -38,4 +43,8 @@ export class ProductList {
       imageUrl: 'assets/images/hammer.png',
     },
   ];
+
+  toggleImage(): void {
+    this.showImage = !this.showImage;
+  }
 }
