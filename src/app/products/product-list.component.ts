@@ -68,6 +68,10 @@ export class ProductList implements OnInit {
     this.showImage = !this.showImage;
   }
 
+  onRatingClicked(message: string): void {
+    this.pageTitle = `Product List: ${message}`;
+  }
+
   ngOnInit(): void {
     this.listFilter = 'cart';
   }
