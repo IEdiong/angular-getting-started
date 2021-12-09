@@ -4,7 +4,10 @@
     <div class="row">
       <div class="col-md-2">Filter by:</div>
       <div class="col-md-4">
-        <input type="text" name="" id="" [(ngModel)]="listFilter" />
+        <input type="text"
+               name=""
+               id=""
+               [(ngModel)]="listFilter" />
       </div>
     </div>
     <div class="row">
@@ -13,11 +16,13 @@
       </div>
     </div>
     <div class="table-responsive">
-      <table class="table" *ngIf="products.length">
+      <table class="table"
+             *ngIf="products.length">
         <thead>
           <tr>
             <th>
-              <button class="btn btn-primary" (click)="toggleImage()">
+              <button class="btn btn-primary"
+                      (click)="toggleImage()">
                 {{ showImage ? "Hide" : "Show" }} Image
               </button>
             </th>
@@ -29,21 +34,20 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let product of products">
+          <tr *ngFor="let product of filteredProducts">
             <td>
-              <img
-                [src]="product.imageUrl"
-                [title]="product.description"
-                [style.width.px]="imageWidth"
-                [style.margin.px]="imageMargin"
-                *ngIf="showImage"
-              />
+              <img [src]="product.imageUrl"
+                   [title]="product.description"
+                   [style.width.px]="imageWidth"
+                   [style.margin.px]="imageMargin"
+                   *ngIf="showImage" />
             </td>
             <td>{{ product.productName }}</td>
-            <td>{{ product.productCode }}</td>
+            <td>{{ product.productCode | lowercase | convertToSpaces: '-'}}</td>
             <td>{{ product.releaseDate }}</td>
             <!-- TODO: Create a Pipe to format to Nigerian currency -->
-            <td>{{ product.price | currency: "USD":"symbol":"2.2-2" }}</td>
+            <!-- <td>{{ product.price | currency: "USD":"symbol":"2.2-2" }}</td> -->
+            <td>{{ product.price | NGN }}</td>
             <td>{{ product.starRating }}</td>
           </tr>
         </tbody>
