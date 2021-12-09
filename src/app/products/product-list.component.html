@@ -45,9 +45,7 @@
             <td>{{ product.productName }}</td>
             <td>{{ product.productCode | lowercase | convertToSpaces: '-'}}</td>
             <td>{{ product.releaseDate }}</td>
-            <!-- TODO: Create a Pipe to format to Nigerian currency -->
-            <!-- <td>{{ product.price | currency: "USD":"symbol":"2.2-2" }}</td> -->
-            <td>{{ product.price | NGN }}</td>
+            <td>{{ product.price | currency: "NGN":"symbol-narrow":"2.2-2" }}</td>
             <td>{{ product.starRating }}</td>
           </tr>
         </tbody>
